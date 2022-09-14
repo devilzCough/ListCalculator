@@ -9,6 +9,7 @@ import Foundation
 
 struct Item: Identifiable {
     let id: Int
+    var name = ""
     var isChecked: Bool = true
     var price = ""
     var count = 1

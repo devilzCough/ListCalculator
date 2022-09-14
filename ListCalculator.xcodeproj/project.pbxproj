@@ -16,6 +16,8 @@
 		0D51D94728D03C4C00F2BE83 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94628D03C4C00F2BE83 /* CheckButton.swift */; };
 		0D51D94928D0403200F2BE83 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94828D0403200F2BE83 /* CircleImage.swift */; };
 		0D51D94B28D046F600F2BE83 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94A28D046F600F2BE83 /* Item.swift */; };
+		0D51D94F28D1A63100F2BE83 /* ListCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94E28D1A63100F2BE83 /* ListCalculatorView.swift */; };
+		0D51D95128D1A65000F2BE83 /* ListCalculatorItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D95028D1A65000F2BE83 /* ListCalculatorItemRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		0D51D94628D03C4C00F2BE83 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		0D51D94828D0403200F2BE83 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		0D51D94A28D046F600F2BE83 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		0D51D94E28D1A63100F2BE83 /* ListCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCalculatorView.swift; sourceTree = "<group>"; };
+		0D51D95028D1A65000F2BE83 /* ListCalculatorItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCalculatorItemRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +67,13 @@
 			children = (
 				0D1330C528D01A7900797147 /* ListCalculatorApp.swift */,
 				0D1330C728D01A7900797147 /* ContentView.swift */,
+				0D51D94E28D1A63100F2BE83 /* ListCalculatorView.swift */,
+				0D51D95028D1A65000F2BE83 /* ListCalculatorItemRow.swift */,
 				0D51D94428D03B4000F2BE83 /* SimpleListView.swift */,
-				0D51D94A28D046F600F2BE83 /* Item.swift */,
 				0D1330D328D01CAA00797147 /* SimpleListItemRow.swift */,
 				0D51D94628D03C4C00F2BE83 /* CheckButton.swift */,
 				0D51D94828D0403200F2BE83 /* CircleImage.swift */,
+				0D51D94A28D046F600F2BE83 /* Item.swift */,
 				0D1330C928D01A7B00797147 /* Assets.xcassets */,
 				0D1330CB28D01A7B00797147 /* Preview Content */,
 			);
@@ -156,6 +162,8 @@
 				0D1330C828D01A7900797147 /* ContentView.swift in Sources */,
 				0D1330C628D01A7900797147 /* ListCalculatorApp.swift in Sources */,
 				0D51D94928D0403200F2BE83 /* CircleImage.swift in Sources */,
+				0D51D95128D1A65000F2BE83 /* ListCalculatorItemRow.swift in Sources */,
+				0D51D94F28D1A63100F2BE83 /* ListCalculatorView.swift in Sources */,
 				0D51D94B28D046F600F2BE83 /* Item.swift in Sources */,
 				0D51D94728D03C4C00F2BE83 /* CheckButton.swift in Sources */,
 				0D51D94528D03B4000F2BE83 /* SimpleListView.swift in Sources */,
