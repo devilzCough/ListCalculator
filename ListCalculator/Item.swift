@@ -8,9 +8,9 @@
 import Foundation
 
 struct Item: Identifiable {
-    let id: Int
+    let id = UUID().uuidString
     var name = ""
     var isChecked: Bool = true
-    var price = ""
+    var price = 0
     var count = 1
 }

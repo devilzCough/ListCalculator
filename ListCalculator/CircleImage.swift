@@ -25,7 +25,7 @@ struct CircleImage: View {
                     .fill(color)
                     .frame(width: geometry.size.width * 0.8)
             }
-            .offset(y: geometry.size.height / 2 - geometry.size.width / 2)
+            .offset(y: geometry.size.height / 2 - geometry.size.width / 2)   
         }
     }
 }

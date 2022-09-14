@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SimpleListView: View {
     
-    @State private var index = 1
-    @State private var items: [Item] = [Item(id: 1)]
+    @State private var items: [Item] = [Item()]
     
     var checkedItems: [Item] {
         items.filter { item in
@@ -20,8 +19,7 @@ struct SimpleListView: View {
     
     var totalPrice: Int {
         checkedItems.reduce(0) { partialResult, item in
-            let price = Int(item.price) ?? 0
-            return partialResult + price * item.count
+            partialResult + item.price * item.count
         }
     }
     
@@ -34,15 +32,13 @@ struct SimpleListView: View {
                     }
                     
                     Button("Add") {
-                        index += 1
-                        items.append(Item(id: index))
+                        items.append(Item())
                     }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Reset") {
-                            index = 1
-                            items = [Item(id: index)]
+                            items = [Item()]
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {

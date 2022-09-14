@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ListCalculatorView: View {
     
-    @State private var index = 1
-    @State private var items: [Item] = [Item(id: 1)]
+    @State private var items: [Item] = [Item()]
     
     var checkedItems: [Item] {
         items.filter { item in
@@ -20,10 +19,18 @@ struct ListCalculatorView: View {
     
     var totalPrice: Int {
         checkedItems.reduce(0) { partialResult, item in
-            let price = Int(item.price) ?? 0
-            return partialResult + price * item.count
+            return partialResult + item.price * item.count
         }
     }
+    
+    // test
+//    @State var showPopup: Bool = false
+//    @State private var showItemInputView: Bool = false
+//    @State private var selectedItem: Item = nil
+//    func selectItem(_ item: Item) {
+//        self.selectedItem = item
+//        self.showItemInputView = true
+//    }
     
     var body: some View {
         NavigationView {
@@ -31,20 +38,23 @@ struct ListCalculatorView: View {
                 List {
                     ForEach($items) { item in
                         ListCalculatorItemRow(item: item)
-                            
+            
+//                        NavigationLink {
+//                            ListCalculatorInputView(item: item)
+//                        } label: {
+//                            ListCalculatorItemRow(item: item)
+//                        }
                     }
                     
                     Button("Add") {
-                        index += 1
-                        items.append(Item(id: index))
+                        items.append(Item())
                     }
                 }
                 .navigationTitle("Title")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Reset") {
-                            index = 1
-                            items = [Item(id: index)]
+                            items = [Item()]
                         }
                     }
                     ToolbarItemGroup {

@@ -17,20 +17,18 @@ struct ListCalculatorItemRow: View {
                 .frame(width: 20)
             
             TextField("이름", text: $item.name)
-                .disabled(true)
+//                .disabled(true)
             
-            TextField("금액", text: $item.price)
-                .disabled(true)
+            TextField("금액", value: $item.price, formatter: NumberFormatter())
+//                .disabled(true)
 
-            Stepper(value: $item.count, in: 1...100) {
-                Text("\(item.count)")
-            }
+            TextField("수량", value: $item.count, formatter: NumberFormatter())
         }
     }
 }
 
 struct ListCalculatorItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        ListCalculatorItemRow(item: .constant(Item(id: 1)))
+        ListCalculatorItemRow(item: .constant(Item()))
     }
 }

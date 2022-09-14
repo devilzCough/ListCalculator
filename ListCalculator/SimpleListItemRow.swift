@@ -16,7 +16,7 @@ struct SimpleListItemRow: View {
             CheckButton(isChecked: $item.isChecked)
                 .frame(width: 20)
             
-            TextField("금액", text: $item.price)
+            TextField("금액", value: $item.price, formatter: NumberFormatter())
 
             Stepper(value: $item.count, in: 1...100) {
                 Text("\(item.count)")
@@ -27,6 +27,6 @@ struct SimpleListItemRow: View {
 
 struct SimpleListItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListItemRow(item: .constant(Item(id: 1)))
+        SimpleListItemRow(item: .constant(Item()))
     }
 }
