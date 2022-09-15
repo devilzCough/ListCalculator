@@ -38,12 +38,6 @@ struct ListCalculatorView: View {
                 List {
                     ForEach($items) { item in
                         ListCalculatorItemRow(item: item)
-            
-//                        NavigationLink {
-//                            ListCalculatorInputView(item: item)
-//                        } label: {
-//                            ListCalculatorItemRow(item: item)
-//                        }
                     }
                     
                     Button("Add") {

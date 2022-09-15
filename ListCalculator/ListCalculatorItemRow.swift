@@ -11,18 +11,22 @@ struct ListCalculatorItemRow: View {
     
     @Binding var item: Item
     
+    @State private var showInputView: Bool = false
+    
     var body: some View {
         HStack {
             CheckButton(isChecked: $item.isChecked)
                 .frame(width: 20)
             
             TextField("이름", text: $item.name)
-//                .disabled(true)
-            
             TextField("금액", value: $item.price, formatter: NumberFormatter())
-//                .disabled(true)
-
             TextField("수량", value: $item.count, formatter: NumberFormatter())
+        }
+        .onTapGesture {
+            showInputView = true
+        }
+        .sheet(isPresented: $showInputView) {
+            ListCalculatorInputView(item: $item)
         }
     }
 }
