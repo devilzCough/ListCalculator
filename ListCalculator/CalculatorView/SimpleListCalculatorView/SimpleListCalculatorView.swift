@@ -7,28 +7,16 @@
 
 import SwiftUI
 
-struct SimpleListView: View {
+struct SimpleListCalculatorView: View {
     
     @State private var items: [Item] = [Item()]
-    
-    var checkedItems: [Item] {
-        items.filter { item in
-            item.isChecked
-        }
-    }
-    
-    var totalPrice: Int {
-        checkedItems.reduce(0) { partialResult, item in
-            partialResult + item.price * item.count
-        }
-    }
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach($items) { item in
-                        SimpleListItemRow(item: item)
+                        SimpleListCalculatorItemRow(item: item)
                     }
                     
                     Button("Add") {
@@ -47,16 +35,7 @@ struct SimpleListView: View {
                         }
                     }
                 }
-                
-                HStack {
-                    Text("항목 \(checkedItems.count)개")
-                        .frame(maxWidth: .infinity)
-                    Text("총 \(totalPrice)원")
-                        .frame(maxWidth: .infinity)
-                }
-                .font(.title3)
-                .frame(maxHeight: 50)
-                .background(Color.yellow)
+                CalculateResultView(items: $items)
             }
         }
     }
@@ -64,6 +43,6 @@ struct SimpleListView: View {
 
 struct SimpleListView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListView()
+        SimpleListCalculatorView()
     }
 }

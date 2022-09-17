@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SimpleListItemRow: View {
+struct SimpleListCalculatorItemRow: View {
     
     @Binding var item: Item
     
@@ -27,6 +27,6 @@ struct SimpleListItemRow: View {
 
 struct SimpleListItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListItemRow(item: .constant(Item()))
+        SimpleListCalculatorItemRow(item: .constant(Item()))
     }
 }
