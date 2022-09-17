@@ -23,14 +23,14 @@ struct ListCalculatorView: View {
         }
     }
     
-    // test
-//    @State var showPopup: Bool = false
-//    @State private var showItemInputView: Bool = false
-//    @State private var selectedItem: Item = nil
-//    func selectItem(_ item: Item) {
-//        self.selectedItem = item
-//        self.showItemInputView = true
-//    }
+    @State private var showInputView: Bool = false
+    @State private var selectedItem: Item = Item()
+    func selectItem(_ item: Item) {
+        self.selectedItem = item
+        self.showInputView = true
+    }
+    
+    private let size = UIScreen.main.bounds.size.width * 0.8
     
     var body: some View {
         NavigationView {
@@ -38,12 +38,19 @@ struct ListCalculatorView: View {
                 List {
                     ForEach($items) { item in
                         ListCalculatorItemRow(item: item)
+                            .onTapGesture {
+                                selectItem(item.wrappedValue)
+                            }
                     }
                     
                     Button("Add") {
                         items.append(Item())
                     }
-                }
+                }.popup(isPresented: $showInputView, view: {
+                    ListCalculatorInputView(item: $selectedItem)
+                        .frame(width: size, height: size)
+                        .background(Color.clear)
+                })
                 .navigationTitle("Title")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

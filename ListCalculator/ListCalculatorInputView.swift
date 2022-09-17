@@ -40,13 +40,12 @@ struct ListCalculatorInputView: View {
             .listRowInsets(EdgeInsets())
             .background(Color.yellow)
         }
-        .listStyle(.inset)
     }
 }
 
 struct ListCalculatorInputView_Previews: PreviewProvider {
     static var previews: some View {
         ListCalculatorInputView(item: .constant(Item()))
-            .previewLayout(.fixed(width: 220, height: 220))
+            .previewLayout(.fixed(width: 220, height: 320))
     }
 }

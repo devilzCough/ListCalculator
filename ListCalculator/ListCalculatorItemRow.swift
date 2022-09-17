@@ -11,8 +11,6 @@ struct ListCalculatorItemRow: View {
     
     @Binding var item: Item
     
-    @State private var showInputView: Bool = false
-    
     var body: some View {
         HStack {
             CheckButton(isChecked: $item.isChecked)
@@ -21,12 +19,6 @@ struct ListCalculatorItemRow: View {
             TextField("이름", text: $item.name)
             TextField("금액", value: $item.price, formatter: NumberFormatter())
             TextField("수량", value: $item.count, formatter: NumberFormatter())
-        }
-        .onTapGesture {
-            showInputView = true
-        }
-        .sheet(isPresented: $showInputView) {
-            ListCalculatorInputView(item: $item)
         }
     }
 }
