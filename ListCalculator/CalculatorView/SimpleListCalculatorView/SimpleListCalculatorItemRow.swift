@@ -18,9 +18,7 @@ struct SimpleListCalculatorItemRow: View {
             
             TextField("금액", value: $item.price, formatter: NumberFormatter())
 
-            Stepper(value: $item.count, in: 1...100) {
-                Text("\(item.count)")
-            }
+            InputStepper(count: $item.count) 
         }
     }
 }
