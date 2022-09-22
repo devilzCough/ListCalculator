@@ -11,15 +11,28 @@ struct ListCalculatorItemRow: View {
     
     @Binding var item: Item
     
+    var priceFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }
+    
     var body: some View {
-        HStack {
-            CheckButton(isChecked: $item.isChecked)
-                .frame(width: 20)
-            
-            TextField("이름", text: $item.name)
-            TextField("금액", value: $item.price, formatter: NumberFormatter())
-            InputStepper(count: $item.count)
-        }
+        GeometryReader { geometry in
+            HStack {
+                CheckButton(isChecked: $item.isChecked)
+                    .frame(width: 20)
+                
+                TextField("이름", text: $item.name)
+                    .frame(width: geometry.size.width * 0.35)
+                
+                TextField("금액", value: $item.price, formatter: priceFormatter)
+                    .multilineTextAlignment(.trailing)
+                    .padding(.trailing, 5)
+                
+                InputStepper(count: $item.count)
+            }
+        }   
     }
 }
 
