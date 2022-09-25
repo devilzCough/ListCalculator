@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MountStyleTabView: View {
+struct MountStyleTabBarView: View {
     
     let tabItems: [TabItemData]
     @Binding var selectedIndex: Int
@@ -34,11 +34,10 @@ struct MountStyleTabView: View {
                             CenterTabView(size: width * 0.18)
                             TabItemView(item: item, isSelected: isSelected)
                         }
-                        .offset(y: -height/8/3)
+                        .offset(y: -height/8/4)
                     } else {
                         TabItemView(item: item, isSelected: isSelected)
                     }
-                    
                 }
                 Spacer()
             }
@@ -50,7 +49,7 @@ struct MountStyleTabView: View {
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        MountStyleTabView(
+        MountStyleTabBarView(
             tabItems: [
                 TabItemData(icon: "list.bullet.rectangle.portrait.fill", title: "list"),
                 TabItemData(icon: "plus", title: ""),

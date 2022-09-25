@@ -28,8 +28,6 @@ struct ContentView: View {
     
     @State private var selection: Int = 0
     
-    
-    
     var body: some View {
         
         CustomTabView(tabs: Tab.allCases.map { $0.tabItem }, selectedIndex: $selection) { index in

@@ -19,7 +19,7 @@ struct CustomTabView<Content: View>: View {
     
     var body: some View {
         
-        ZStack {
+        VStack {
             TabView(selection: $selectedIndex) {
                 ForEach(tabs.indices) { index in
                     content(index)
@@ -27,14 +27,9 @@ struct CustomTabView<Content: View>: View {
                 }
             }
             
-            VStack {
-                Spacer()
-//                if selectedIndex != center {
-                    MountStyleTabView(tabItems: tabs, selectedIndex: $selectedIndex)
-//                }
-                
+            if selectedIndex != center {
+                MountStyleTabBarView(tabItems: tabs, selectedIndex: $selectedIndex)
             }
-            .frame(maxHeight: .infinity)
         }
     }
 }
