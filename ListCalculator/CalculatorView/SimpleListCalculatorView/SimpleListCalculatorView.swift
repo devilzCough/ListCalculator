@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SimpleListCalculatorView: View {
     
+    @Binding var selection: Int
     @State private var items: [Item] = [Item()]
     
     var body: some View {
@@ -29,9 +30,13 @@ struct SimpleListCalculatorView: View {
                             items = [Item()]
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItemGroup {
+                        Button("Save") {
+                            print("Save")
+                        }
+                        
                         Button("Close") {
-                            print("Close")
+                            didTapCloseButton()
                         }
                     }
                 }
@@ -39,10 +44,14 @@ struct SimpleListCalculatorView: View {
             }
         }
     }
+    
+    func didTapCloseButton() {
+        selection = 0
+    }
 }
 
 struct SimpleListView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListCalculatorView()
+        SimpleListCalculatorView(selection: .constant(1))
     }
 }

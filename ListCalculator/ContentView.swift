@@ -34,6 +34,7 @@ struct ContentView: View {
             let type = Tab(rawValue: index) ?? .list
             getTabView(type: type)
         }
+        .animation(.easeInOut, value: selection)
     }
     
     @ViewBuilder
@@ -42,7 +43,7 @@ struct ContentView: View {
         case .list:
             MainListView()
         case .calculator:
-            SimpleListCalculatorView()
+            SimpleListCalculatorView(selection: $selection)
         case .setting:
             SettingView()
         }
