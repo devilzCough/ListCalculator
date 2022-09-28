@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct MainListView: View {
+    
+    @State private var listItems = [
+        MainListItemData(fileType: .list, fileName: "aaa"),
+        MainListItemData(fileType: .directory, fileName: "bbb"),
+        MainListItemData(fileType: .list, fileName: "ccc"),
+        MainListItemData(fileType: .list, fileName: "ddd"),
+        MainListItemData(fileType: .list, fileName: "eee"),
+        MainListItemData(fileType: .directory, fileName: "fff")
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                List($listItems) { item in
+                    MainListItemListStyleView(item: item)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Edit") {
+                        print("Edit")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add") {
+                        print("Add")
+                    }
+                }
+            }
+        }
     }
 }
 
