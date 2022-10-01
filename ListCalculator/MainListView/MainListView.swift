@@ -11,7 +11,9 @@ struct MainListView: View {
     
     private var listItems = [
         MainListItemData(fileType: .list, fileName: "aaa"),
-        MainListItemData(fileType: .directory, fileName: "bbb"),
+        MainListItemData(fileType: .directory, fileName: "bbb",
+                         content: [MainListItemData(fileType: .list, fileName: "test1"), MainListItemData(fileType: .list, fileName: "test2"),
+                                   MainListItemData(fileType: .directory, fileName: "test3")]),
         MainListItemData(fileType: .list, fileName: "ccc"),
         MainListItemData(fileType: .list, fileName: "ddd"),
         MainListItemData(fileType: .directory, fileName: "bbakdk"),
@@ -25,14 +27,22 @@ struct MainListView: View {
     }
     
     @State private var searchText = ""
+//    @State private var selection: UUID?
     
     var body: some View {
         NavigationView {
             VStack {
                 SearchBar(text: $searchText)
                     .padding(.horizontal)
-                List {
-                    ForEach(filteredItems) { item in
+                List(filteredItems, children: \.content) { item in
+                    if item.fileType == .list {
+                        NavigationLink {
+                            ListCalculatorView(list: ItemList())
+                                .navigationBarHidden(true)
+                        } label: {
+                            MainListItemListStyleView(item: item)
+                        }
+                    } else {
                         MainListItemListStyleView(item: item)
                     }
                 }
@@ -53,6 +63,8 @@ struct MainListView: View {
             }
         }
     }
+    
+    
 }
 
 struct MainListView_Previews: PreviewProvider {

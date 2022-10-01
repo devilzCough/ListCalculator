@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListCalculatorView: View {
     
+    @Environment(\.dismiss) var dismiss
 //    @State private var items: [Item] = [Item()]
     @ObservedObject var list: ItemList
     
@@ -72,7 +73,7 @@ struct ListCalculatorView: View {
                         }
                         ToolbarItemGroup {
                             Button("Cancel") {
-                                print("Cancel")
+                                dismiss()
                             }
                             
                             Button("Save") {

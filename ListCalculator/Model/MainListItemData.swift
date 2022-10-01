@@ -8,6 +8,7 @@
 import Foundation
 
 struct MainListItemData: Identifiable {
+    
     enum FileType {
         case list
         case directory

@@ -14,3 +14,7 @@ struct Item: Identifiable {
     var price = 0
     var count = 1
 }
+
+class ItemList: ObservableObject {
+    @Published var items: [Item] = [Item()]
+}
