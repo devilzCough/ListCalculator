@@ -50,15 +50,17 @@ struct MainListView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Edit") {
-                        print("Edit")
-                    }
+                    EditButton()
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add") {
-                        print("Add")
+                    NavigationLink {
+                        ListCalculatorView(list: ItemList())
+                            .navigationBarHidden(true)
+                    } label: {
+                        Text("Add")
                     }
+
                 }
             }
         }
