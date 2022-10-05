@@ -27,7 +27,6 @@ struct MainListView: View {
     }
     
     @State private var searchText = ""
-//    @State private var selection: UUID?
     
     var body: some View {
         NavigationView {
@@ -37,7 +36,7 @@ struct MainListView: View {
                 List(filteredItems, children: \.content) { item in
                     if item.fileType == .list {
                         NavigationLink {
-                            ListCalculatorView(list: ItemList())
+                            ListCalculatorView()
                                 .navigationBarHidden(true)
                         } label: {
                             MainListItemListStyleView(item: item)
@@ -55,7 +54,7 @@ struct MainListView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        ListCalculatorView(list: ItemList())
+                        ListCalculatorView()
                             .navigationBarHidden(true)
                     } label: {
                         Text("Add")

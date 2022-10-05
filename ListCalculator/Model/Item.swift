@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Item: Identifiable {
-    let id = UUID().uuidString
+struct Item: Identifiable, Hashable {
+    let id = UUID()
     var name = ""
     var isChecked: Bool = true
     var price = 0

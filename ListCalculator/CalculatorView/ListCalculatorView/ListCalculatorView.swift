@@ -10,94 +10,64 @@ import SwiftUI
 struct ListCalculatorView: View {
     
     @Environment(\.dismiss) var dismiss
-//    @State private var items: [Item] = [Item()]
-    @ObservedObject var list: ItemList
-    
-    @State private var showInputView: Bool = false
-    @State private var selectedItem: Item = Item()
-
-    func selectItem(_ item: Item) {
-        self.selectedItem = item
-        self.showInputView = true
-    }
-    
-    func updateItem(_ updateItem: Item) {
-        for i in 0..<list.items.count {
-            if list.items[i].id == updateItem.id {
-                list.items[i] = updateItem
-                break
-            }
-        }
-    }
+//    @Environment(\.editMode) var editMode
+    @State private var items: [Item] = [Item()]
     
     private let size = UIScreen.main.bounds.size.width * 0.8
+    
+    @State private var selection: Int?
+    @State private var selectedItem: Item = Item()
     
     var body: some View {
         ZStack {
             NavigationView {
                 VStack {
-                    List {
-                        ForEach($list.items) { $item in
-                            ListCalculatorItemRow(item: $item)
-                                .onTapGesture {
-                                    selectItem(item)
-                                }
-                                
-                        }
+                    List($items.indices, id: \.self, selection: $selection) { index in
                         
-                        Button("Add") {
-                            list.items.append(Item())
-                        }
+                        ListCalculatorItemRow(item: $items[index])
                     }
-    //                .popup(isPresented: $showInputView, view: {
-    //                    Color.red
-    //                        .frame(width: 100, height: 100)
-    //                })
-                    
-    //                .popup(isPresented: $showInputView) {
-    //                    ListCalculatorInputView(item: $selectedItem, isPresented: $showInputView)
-    //                        .frame(width: size, height: size)
-    //                        .background(Color.clear)
-    //                        .onDisappear {
-    //                            print("disappear")
-    //                            updateItem(selectedItem)
-    ////                            items[selected] = selectedItem
-    //                        }
-    //                }
                     .navigationTitle("Title")
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Button("Reset") {
-                                list.items = []
+                                items = []
                             }
                         }
                         ToolbarItemGroup {
                             Button("Cancel") {
                                 dismiss()
                             }
-                            
+
                             Button("Save") {
                                 print("Save")
                             }
                         }
                     }
                     
-                    CalculateResultView(items: $list.items)
+                    Button("Add") {
+                        items.append(Item())
+                    }
+                    
+                    CalculateResultView(items: $items)
                 }
-            }
+            } // NavigationView
             
-            if showInputView {
-                ListCalculatorInputView(item: $selectedItem, isPresented: $showInputView)
+            if let selection = selection {
+                ListCalculatorInputView(item: $selectedItem, hasSelection: self.$selection)
                     .frame(width: size, height: size)
+                    .onAppear {
+                        selectedItem = items[selection]
+                    }
+                    .onDisappear {
+                        items[selection] = selectedItem
+                    }
             }
-           
-                
         } // ZStack
     } // body
 } // ListCalculatorView
 
 struct ListCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        ListCalculatorView(list: ItemList())
+        ListCalculatorView()
     }
 }

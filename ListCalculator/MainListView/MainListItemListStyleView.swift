@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainListItemListStyleView: View {
     
-    @Binding var item: MainListItemData
+    var item: MainListItemData
     
     var body: some View {
         HStack {
@@ -22,6 +22,6 @@ struct MainListItemListStyleView: View {
 
 struct MainListItemListStyleView_Previews: PreviewProvider {
     static var previews: some View {
-        MainListItemListStyleView(item: .constant(MainListItemData(fileType: .list, fileName: "test file")))
+        MainListItemListStyleView(item: MainListItemData(fileType: .list, fileName: "test file"))
     }
 }

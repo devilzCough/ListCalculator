@@ -20,17 +20,24 @@ struct ListCalculatorItemRow: View {
     var body: some View {
         GeometryReader { geometry in
             HStack {
-                CheckButton(isChecked: $item.isChecked)
-                    .frame(width: 20)
+//                CheckButton(isChecked: $item.isChecked)
+//                    .frame(width: 20)
                 
-                TextField("이름", text: $item.name)
+//                TextField("이름", text: $item.name)
+                Text(item.name)
+                    .frame(width: geometry.size.width * 0.4)
+                    .background(Color.blue)
+//                TextField("금액", value: $item.price, formatter: priceFormatter)
+//                    .multilineTextAlignment(.trailing)
+//                    .padding(.trailing, 5)
+                
+                Text("\(item.price)")
                     .frame(width: geometry.size.width * 0.35)
+                    .background(Color.yellow)
                 
-                TextField("금액", value: $item.price, formatter: priceFormatter)
-                    .multilineTextAlignment(.trailing)
-                    .padding(.trailing, 5)
-                
-                InputStepper(count: $item.count)
+//                InputStepper(count: $item.count)
+                Text("\(item.count)")
+                    .background(Color.green)
             }
         }   
     }
