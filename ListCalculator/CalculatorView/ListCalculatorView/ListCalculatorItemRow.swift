@@ -14,30 +14,32 @@ struct ListCalculatorItemRow: View {
     var priceFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
+        formatter.zeroSymbol = ""
         return formatter
     }
     
     var body: some View {
         GeometryReader { geometry in
             HStack {
-//                CheckButton(isChecked: $item.isChecked)
-//                    .frame(width: 20)
-                
-//                TextField("이름", text: $item.name)
-                Text(item.name)
+                CheckButton(isChecked: $item.isChecked)
+                    .buttonStyle(BorderlessButtonStyle())
+                    .frame(width: geometry.size.width * 0.06)
+
+                Text("\(item.name)")
+                    .multilineTextAlignment(.leading)
                     .frame(width: geometry.size.width * 0.4)
-                    .background(Color.blue)
-//                TextField("금액", value: $item.price, formatter: priceFormatter)
-//                    .multilineTextAlignment(.trailing)
-//                    .padding(.trailing, 5)
-                
-                Text("\(item.price)")
+
+                TextField("금액", value: $item.price, formatter: priceFormatter)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .multilineTextAlignment(.trailing)
                     .frame(width: geometry.size.width * 0.35)
-                    .background(Color.yellow)
-                
-//                InputStepper(count: $item.count)
-                Text("\(item.count)")
-                    .background(Color.green)
+
+                TextField("수량", value: $item.count, formatter: NumberFormatter())
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .multilineTextAlignment(.center)
+                    .frame(width: geometry.size.width * 0.12)
             }
         }   
     }
