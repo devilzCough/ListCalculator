@@ -21,40 +21,45 @@ struct ListCalculatorInputView: View {
     }
     
     var body: some View {
-        List {
-            TextField("이름", text: $item.name)
-            TextField("금액", value: $item.price, formatter: NumberFormatter())
-            Stepper(value: $item.count, in: 1...100) {
-                Text("\(item.count)")
-            }
-            
-            HStack {
-                Text("금액 포함 여부")
-                CheckButton(isChecked: $item.isChecked)
-                    .frame(width: 20, height: 20)
-            }
-            .frame(maxWidth: .infinity)
-            
-            HStack {
-                Button("Cancel") {
-                    print("Cancel")
-                    item = copiedItem
-                    hasSelection = nil
+        if #available(iOS 16.0, *) {
+            List {
+                TextField("이름", text: $item.name)
+                TextField("금액", value: $item.price, formatter: NumberFormatter())
+                Stepper(value: $item.count, in: 1...100) {
+                    Text("\(item.count)")
+                }
+                
+                HStack {
+                    Text("금액 포함 여부")
+                    CheckButton(isChecked: $item.isChecked)
+                        .frame(width: 20, height: 20)
                 }
                 .frame(maxWidth: .infinity)
-                .buttonStyle(BorderlessButtonStyle())
                 
-                Divider()
-                
-                Button("Done") {
-                    print("Done")
-                    hasSelection = nil
+                HStack {
+                    Button("Cancel") {
+                        print("Cancel")
+                        item = copiedItem
+                        hasSelection = nil
+                    }
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(BorderlessButtonStyle())
+                    
+                    Divider()
+                    
+                    Button("Done") {
+                        print("Done")
+                        hasSelection = nil
+                    }
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(BorderlessButtonStyle())
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(BorderlessButtonStyle())
+                .listRowInsets(EdgeInsets())
+                .background(Color.yellow)
             }
-            .listRowInsets(EdgeInsets())
-            .background(Color.yellow)
+            .scrollContentBackground(.hidden)
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
