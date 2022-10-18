@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0DB6E828FE93E100CE7DFE /* VisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0DB6E728FE93E100CE7DFE /* VisualEffect.swift */; };
 		0D1330C628D01A7900797147 /* ListCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1330C528D01A7900797147 /* ListCalculatorApp.swift */; };
 		0D1330C828D01A7900797147 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1330C728D01A7900797147 /* ContentView.swift */; };
 		0D1330CA28D01A7B00797147 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D1330C928D01A7B00797147 /* Assets.xcassets */; };
 		0D1330CD28D01A7B00797147 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D1330CC28D01A7B00797147 /* Preview Assets.xcassets */; };
 		0D1330D428D01CAA00797147 /* SimpleListCalculatorItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1330D328D01CAA00797147 /* SimpleListCalculatorItemRow.swift */; };
+		0D42EFE628F425D900FF7575 /* PullDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42EFE528F425D900FF7575 /* PullDownView.swift */; };
+		0D42EFE828F426BC00FF7575 /* PullDownGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42EFE728F426BC00FF7575 /* PullDownGuideView.swift */; };
 		0D51D94528D03B4000F2BE83 /* SimpleListCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94428D03B4000F2BE83 /* SimpleListCalculatorView.swift */; };
 		0D51D94728D03C4C00F2BE83 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94628D03C4C00F2BE83 /* CheckButton.swift */; };
 		0D51D94928D0403200F2BE83 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D51D94828D0403200F2BE83 /* CircleImage.swift */; };
@@ -40,12 +43,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D0DB6E728FE93E100CE7DFE /* VisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffect.swift; sourceTree = "<group>"; };
 		0D1330C228D01A7900797147 /* ListCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D1330C528D01A7900797147 /* ListCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCalculatorApp.swift; sourceTree = "<group>"; };
 		0D1330C728D01A7900797147 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0D1330C928D01A7B00797147 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D1330CC28D01A7B00797147 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D1330D328D01CAA00797147 /* SimpleListCalculatorItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListCalculatorItemRow.swift; sourceTree = "<group>"; };
+		0D42EFE528F425D900FF7575 /* PullDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDownView.swift; sourceTree = "<group>"; };
+		0D42EFE728F426BC00FF7575 /* PullDownGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDownGuideView.swift; sourceTree = "<group>"; };
 		0D51D94428D03B4000F2BE83 /* SimpleListCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListCalculatorView.swift; sourceTree = "<group>"; };
 		0D51D94628D03C4C00F2BE83 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		0D51D94828D0403200F2BE83 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
@@ -157,8 +163,11 @@
 				0D51D96528D5A38900F2BE83 /* SimpleListCalculatorView */,
 				0D51D94628D03C4C00F2BE83 /* CheckButton.swift */,
 				0D51D94828D0403200F2BE83 /* CircleImage.swift */,
+				0D42EFE528F425D900FF7575 /* PullDownView.swift */,
 				0D51D96628D5A3C900F2BE83 /* CalculateResultView.swift */,
 				0DC766EE28D9AD260064482F /* InputStepper.swift */,
+				0D42EFE728F426BC00FF7575 /* PullDownGuideView.swift */,
+				0D0DB6E728FE93E100CE7DFE /* VisualEffect.swift */,
 			);
 			path = CalculatorView;
 			sourceTree = "<group>";
@@ -315,6 +324,8 @@
 				0D51D94928D0403200F2BE83 /* CircleImage.swift in Sources */,
 				0D51D96928D5B01100F2BE83 /* View+Popup.swift in Sources */,
 				0DC766F128DC39290064482F /* SettingView.swift in Sources */,
+				0D0DB6E828FE93E100CE7DFE /* VisualEffect.swift in Sources */,
+				0D42EFE628F425D900FF7575 /* PullDownView.swift in Sources */,
 				0DC766FE28DC48EE0064482F /* CustomTabView.swift in Sources */,
 				0D51D95128D1A65000F2BE83 /* ListCalculatorItemRow.swift in Sources */,
 				0D51D95328D1AB6500F2BE83 /* ListCalculatorInputView.swift in Sources */,
@@ -324,6 +335,7 @@
 				0DCAFD0728E2A40700FE5992 /* MainListCollectionViewCell.swift in Sources */,
 				0D51D94F28D1A63100F2BE83 /* ListCalculatorView.swift in Sources */,
 				0D51D94B28D046F600F2BE83 /* Item.swift in Sources */,
+				0D42EFE828F426BC00FF7575 /* PullDownGuideView.swift in Sources */,
 				0DC766FA28DC3FD20064482F /* TabItemData.swift in Sources */,
 				0DC766EC28D874AA0064482F /* Popup.swift in Sources */,
 				0D51D94728D03C4C00F2BE83 /* CheckButton.swift in Sources */,
@@ -469,6 +481,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,6 +511,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
