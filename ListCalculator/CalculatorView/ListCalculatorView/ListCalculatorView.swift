@@ -92,7 +92,6 @@ struct ListCalculatorView: View {
             }
         }
     }
-    
 } // ListCalculatorView
 
 struct ListCalculatorView_Previews: PreviewProvider {
