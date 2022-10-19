@@ -22,37 +22,43 @@ struct ListCalculatorView: View {
         ZStack {
             NavigationView {
                 VStack {
-                    List($items.indices, id: \.self, selection: $selection) { index in
-                        
-                        ListCalculatorItemRow(item: $items[index])
-                    }
-                    .navigationTitle("Title")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button("Reset") {
-                                items = []
-                            }
+                    ZStack {
+                        List($items.indices, id: \.self, selection: $selection) { index in
+                            ListCalculatorItemRow(item: $items[index])
                         }
-                        ToolbarItemGroup {
-                            Button("Cancel") {
-                                dismiss()
+                        .navigationTitle("Title")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("Reset") {
+                                    items = [Item()]
+                                }
                             }
+                            ToolbarItemGroup {
+                                Button("Cancel") {
+                                    dismiss()
+                                }
 
-                            Button("Save") {
-                                print("Save")
+                                Button("Save") {
+                                    print("Save")
+                                }
                             }
                         }
+                        .refreshable {
+                            items.append(Item())
+                        }
+                        
+                        addButton
                     }
                     
-                    Button("Add") {
-                        items.append(Item())
-                    }
-                    
-                    CalculateResultView(items: $items)
+                    CalculateResultView(items: $items)      
                 }
             } // NavigationView
             
             if let selection = selection {
+                
+                VisualEffect(effect: UIBlurEffect(style: .dark))
+                    .edgesIgnoringSafeArea(.all)
+                
                 ListCalculatorInputView(item: $selectedItem, hasSelection: self.$selection)
                     .frame(width: size, height: size)
                     .onAppear {
@@ -64,6 +70,29 @@ struct ListCalculatorView: View {
             }
         } // ZStack
     } // body
+    
+    @ViewBuilder
+    var addButton: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    items.append(Item())
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 25, height: 25)
+                        .padding()
+                }
+                .background(Color.yellow)
+                .cornerRadius(25)
+                .padding()
+            }
+        }
+    }
+    
 } // ListCalculatorView
 
 struct ListCalculatorView_Previews: PreviewProvider {

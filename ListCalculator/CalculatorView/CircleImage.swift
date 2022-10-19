@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CircleImage: View {
     
-    var color: Color
+    var color: Color = .blue
     
     var body: some View {
         GeometryReader { geometry in
