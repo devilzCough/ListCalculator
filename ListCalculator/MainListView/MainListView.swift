@@ -29,43 +29,39 @@ struct MainListView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationView {
-            VStack {
-                SearchBar(text: $searchText)
-                    .padding(.horizontal)
-                List(filteredItems, children: \.content) { item in
-                    if item.fileType == .list {
-                        NavigationLink {
-                            ListCalculatorView()
-                                .navigationBarHidden(true)
-                        } label: {
-                            MainListItemListStyleView(item: item)
-                        }
-                    } else {
-                        MainListItemListStyleView(item: item)
-                    }
-                }
-                .listStyle(.plain)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
+        VStack {
+            SearchBar(text: $searchText)
+                .padding(.horizontal)
+            List(filteredItems, children: \.content) { item in
+                if item.fileType == .list {
                     NavigationLink {
                         ListCalculatorView()
                             .navigationBarHidden(true)
                     } label: {
-                        Text("Add")
+                        MainListItemListStyleView(item: item)
                     }
-
+                } else {
+                    MainListItemListStyleView(item: item)
                 }
+            }
+            .listStyle(.plain)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    ListCalculatorView()
+                        .navigationBarHidden(true)
+                } label: {
+                    Text("Add")
+                }
+
             }
         }
     }
-    
-    
 }
 
 struct MainListView_Previews: PreviewProvider {

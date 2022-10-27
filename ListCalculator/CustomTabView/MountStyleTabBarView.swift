@@ -23,7 +23,7 @@ struct MountStyleTabBarView: View {
         HStack {
             Spacer()
             
-            ForEach(tabItems.indices) { index in
+            ForEach(tabItems.indices, id: \.self) { index in
                 let item = tabItems[index]
                 Button {
                     selectedIndex = index

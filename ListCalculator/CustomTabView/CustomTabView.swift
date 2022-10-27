@@ -11,6 +11,7 @@ struct CustomTabView<Content: View>: View {
     
     let tabs: [TabItemData]
     @Binding var selectedIndex: Int
+    
     @ViewBuilder let content: (Int) -> Content
     
     var center: Int {
@@ -19,16 +20,15 @@ struct CustomTabView<Content: View>: View {
     
     var body: some View {
         
-        VStack {
-            TabView(selection: $selectedIndex) {
-                ForEach(tabs.indices) { index in
-                    content(index)
-                        .tag(index)
+        switch selectedIndex {
+        case 1:
+            content(selectedIndex)
+        default:
+            NavigationView {
+                VStack {
+                    content(selectedIndex)
+                    MountStyleTabBarView(tabItems: tabs, selectedIndex: $selectedIndex)
                 }
-            }
-            
-            if selectedIndex != center {
-                MountStyleTabBarView(tabItems: tabs, selectedIndex: $selectedIndex)
             }
         }
     }
