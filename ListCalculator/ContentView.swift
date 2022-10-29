@@ -26,13 +26,12 @@ enum Tab: Int, CaseIterable {
 
 struct ContentView: View {
     
-    @State private var selection: Int = 0
+    @State private var selection: Tab = .list
     
     var body: some View {
         
-        CustomTabView(tabs: Tab.allCases.map { $0.tabItem }, selectedIndex: $selection) { index in
-            let type = Tab(rawValue: index) ?? .list
-            getTabView(type: type)
+        CustomTabView(tabs: Tab.allCases.map { $0.tabItem }, selectedTab: $selection) { tab in
+            getTabView(type: tab)
         }
         .animation(.easeInOut, value: selection)
     }

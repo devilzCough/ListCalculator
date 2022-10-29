@@ -10,7 +10,7 @@ import SwiftUI
 struct MountStyleTabBarView: View {
     
     let tabItems: [TabItemData]
-    @Binding var selectedIndex: Int
+    @Binding var selectedTab: Tab
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -26,9 +26,9 @@ struct MountStyleTabBarView: View {
             ForEach(tabItems.indices, id: \.self) { index in
                 let item = tabItems[index]
                 Button {
-                    selectedIndex = index
+                    selectedTab = Tab.allCases[index]
                 } label: {
-                    let isSelected = selectedIndex == index
+                    let isSelected = selectedTab == Tab.allCases[index]
                     if index == center {
                         ZStack {
                             CenterTabView(size: width * 0.18)
@@ -55,7 +55,7 @@ struct TabView_Previews: PreviewProvider {
                 TabItemData(icon: "plus", title: ""),
                 TabItemData(icon: "gearshape.fill", title: "setting")
                       ],
-            selectedIndex: .constant(0)
+            selectedTab: .constant(.list)
         )
     }
 }

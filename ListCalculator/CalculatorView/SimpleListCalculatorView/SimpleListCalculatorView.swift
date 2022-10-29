@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimpleListCalculatorView: View {
     
-    @Binding var selection: Int
+    @Binding var selection: Tab
     @State private var items: [Item] = [Item()]
     
     var body: some View {
@@ -46,12 +46,12 @@ struct SimpleListCalculatorView: View {
     }
     
     func didTapCloseButton() {
-        selection = 0
+        selection = .list
     }
 }
 
 struct SimpleListView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListCalculatorView(selection: .constant(1))
+        SimpleListCalculatorView(selection: .constant(.calculator))
     }
 }

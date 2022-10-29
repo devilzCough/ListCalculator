@@ -10,9 +10,9 @@ import SwiftUI
 struct CustomTabView<Content: View>: View {
     
     let tabs: [TabItemData]
-    @Binding var selectedIndex: Int
+    @Binding var selectedTab: Tab
     
-    @ViewBuilder let content: (Int) -> Content
+    @ViewBuilder let content: (Tab) -> Content
     
     var center: Int {
         return tabs.count / 2
@@ -20,15 +20,20 @@ struct CustomTabView<Content: View>: View {
     
     var body: some View {
         
-        switch selectedIndex {
-        case 1:
-            content(selectedIndex)
-        default:
+        switch selectedTab {
+        case .list:
             NavigationView {
                 VStack {
-                    content(selectedIndex)
-                    MountStyleTabBarView(tabItems: tabs, selectedIndex: $selectedIndex)
+                    content(selectedTab)
+                    MountStyleTabBarView(tabItems: tabs, selectedTab: $selectedTab)
                 }
+            }
+        case .calculator:
+            content(selectedTab)
+        case .setting:
+            VStack {
+                content(selectedTab)
+                MountStyleTabBarView(tabItems: tabs, selectedTab: $selectedTab)
             }
         }
     }
@@ -43,8 +48,8 @@ struct CustomTabView_Previews: PreviewProvider {
                     TabItemData(icon: "plus", title: ""),
                     TabItemData(icon: "gearshape.fill", title: "setting")
                 ],
-            selectedIndex: .constant(0)) { index in
-                if index == 0 {
+            selectedTab: .constant(.list)) { tab in
+                if tab == .list {
                     MainListView()
                 }
             }
