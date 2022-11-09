@@ -10,15 +10,9 @@ import SwiftUI
 struct ListCalculatorInputView: View {
     
     @Binding var item: Item
-    @State private var copiedItem: Item
     
     @Binding var hasSelection: Int?
-    
-    init(item: Binding<Item>, hasSelection: Binding<Int?>) {
-        self._item = item
-        self._hasSelection = hasSelection
-        self._copiedItem = State(initialValue: item.wrappedValue)
-    }
+    @Binding var didTapDoneButton: Bool
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -52,9 +46,9 @@ struct ListCalculatorInputView: View {
             
             HStack {
                 Button("Cancel") {
-                    print("Cancel")
-                    item = copiedItem
+                    didTapDoneButton = false
                     hasSelection = nil
+                    print("Cancel")
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(BorderlessButtonStyle())
@@ -62,8 +56,9 @@ struct ListCalculatorInputView: View {
                 Divider()
                 
                 Button("Done") {
-                    print("Done")
+                    didTapDoneButton = true
                     hasSelection = nil
+                    print("Done")
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(BorderlessButtonStyle())
@@ -76,7 +71,7 @@ struct ListCalculatorInputView: View {
 
 struct ListCalculatorInputView_Previews: PreviewProvider {
     static var previews: some View {
-        ListCalculatorInputView(item: .constant(Item()), hasSelection: .constant(0))
+        ListCalculatorInputView(item: .constant(Item()), hasSelection: .constant(0), didTapDoneButton: .constant(true))
             .previewLayout(.fixed(width: 220, height: 320))
     }
 }
