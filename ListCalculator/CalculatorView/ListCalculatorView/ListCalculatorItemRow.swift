@@ -11,12 +11,12 @@ struct ListCalculatorItemRow: View {
     
     @Binding var item: Item
     
-    var priceFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.zeroSymbol = ""
-        return formatter
-    }
+//    var priceFormatter: NumberFormatter {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
+//        formatter.zeroSymbol = ""
+//        return formatter
+//    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -48,5 +48,14 @@ struct ListCalculatorItemRow: View {
 struct ListCalculatorItemRow_Previews: PreviewProvider {
     static var previews: some View {
         ListCalculatorItemRow(item: .constant(Item()))
+    }
+}
+
+extension View {
+    var priceFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.zeroSymbol = ""
+        return formatter
     }
 }

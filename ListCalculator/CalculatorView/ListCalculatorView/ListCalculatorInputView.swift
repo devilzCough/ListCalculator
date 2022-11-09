@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ListCalculatorInputView: View {
     
+    enum Field: Hashable {
+        case nameField
+        case priceField
+    }
+    
     @Binding var item: Item
     
     @Binding var hasSelection: Int?
     @Binding var didTapDoneButton: Bool
+    
+    @FocusState private var focusedField: Field?
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -32,7 +39,25 @@ struct ListCalculatorInputView: View {
     var content: some View {
         List {
             TextField("이름", text: $item.name)
-            TextField("금액", value: $item.price, formatter: NumberFormatter())
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .priceField
+                }
+                .focused($focusedField, equals: .nameField)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        focusedField = .nameField
+                    }
+                }
+            
+            TextField("금액", value: $item.price, formatter: priceFormatter)
+                .keyboardType(.numberPad)
+                .submitLabel(.done)
+                .onSubmit {
+                    focusedField = nil
+                }
+                .focused($focusedField, equals: .priceField)
+            
             Stepper(value: $item.count, in: 1...100) {
                 Text("\(item.count)")
             }
@@ -48,7 +73,6 @@ struct ListCalculatorInputView: View {
                 Button("Cancel") {
                     didTapDoneButton = false
                     hasSelection = nil
-                    print("Cancel")
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(BorderlessButtonStyle())
@@ -58,7 +82,6 @@ struct ListCalculatorInputView: View {
                 Button("Done") {
                     didTapDoneButton = true
                     hasSelection = nil
-                    print("Done")
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(BorderlessButtonStyle())
