@@ -7,12 +7,13 @@
 
 import SwiftUI
 
+enum Field: Hashable {
+    case nameField
+    case priceField
+    case countField
+}
+
 struct ListCalculatorInputView: View {
-    
-    enum Field: Hashable {
-        case nameField
-        case priceField
-    }
     
     @Binding var item: Item
     

@@ -16,7 +16,10 @@ struct SimpleListCalculatorItemRow: View {
             CheckButton(isChecked: $item.isChecked)
                 .frame(width: 20)
             
-            TextField("금액", value: $item.price, formatter: NumberFormatter())
+            TextField("금액", value: $item.price, formatter: priceFormatter)
+                .keyboardType(.decimalPad)
+                .textFieldStyle(.roundedBorder)
+                .multilineTextAlignment(.trailing)
 
             InputStepper(count: $item.count) 
         }

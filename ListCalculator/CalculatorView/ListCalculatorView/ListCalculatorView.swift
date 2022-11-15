@@ -48,7 +48,9 @@ struct ListCalculatorView: View {
                             addItem()
                         }
                         
-                        addButton
+                        AddButtonView {
+                            addItem()
+                        }
                     }
                     
                     CalculateResultView(items: $items)      
@@ -74,28 +76,6 @@ struct ListCalculatorView: View {
             }
         } // ZStack
     } // body
-    
-    @ViewBuilder
-    var addButton: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Button {
-                    addItem()
-                } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 25, height: 25)
-                        .padding()
-                }
-                .background(Color.yellow)
-                .cornerRadius(25)
-                .padding()
-            }
-        }
-    }
     
     private func addItem() {
         items.append(Item())

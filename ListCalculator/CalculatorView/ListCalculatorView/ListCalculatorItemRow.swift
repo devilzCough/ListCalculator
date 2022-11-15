@@ -11,13 +11,6 @@ struct ListCalculatorItemRow: View {
     
     @Binding var item: Item
     
-//    var priceFormatter: NumberFormatter {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
-//        formatter.zeroSymbol = ""
-//        return formatter
-//    }
-    
     var body: some View {
         GeometryReader { geometry in
             HStack {

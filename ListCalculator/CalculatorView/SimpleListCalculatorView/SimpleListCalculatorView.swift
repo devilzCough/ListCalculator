@@ -15,31 +15,34 @@ struct SimpleListCalculatorView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach($items) { item in
-                        SimpleListCalculatorItemRow(item: item)
+                ZStack {
+                    List {
+                        ForEach($items) { item in
+                            SimpleListCalculatorItemRow(item: item)
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Reset") {
+                                items = [Item()]
+                            }
+                        }
+                        ToolbarItemGroup {
+                            Button("Save") {
+                                print("Save")
+                            }
+                            
+                            Button("Close") {
+                                didTapCloseButton()
+                            }
+                        }
                     }
                     
-                    Button("Add") {
+                    AddButtonView {
                         items.append(Item())
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Reset") {
-                            items = [Item()]
-                        }
-                    }
-                    ToolbarItemGroup {
-                        Button("Save") {
-                            print("Save")
-                        }
-                        
-                        Button("Close") {
-                            didTapCloseButton()
-                        }
-                    }
-                }
+                
                 CalculateResultView(items: $items)
             }
         }
